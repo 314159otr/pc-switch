@@ -20,6 +20,8 @@
    ```
 # Configuration
 
+## Logitech Devices
+
 1. Find device:
 
    - Solaar device name (MX Master 3S):
@@ -86,4 +88,48 @@
    ```console
    hidapitester --vidpid 046D/B034 --open --length 20 --send-output 0x11,0xFF,0x0A,0x1D,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
    ```
-   
+
+## Monitor
+
+1. Find device (display 1):
+
+   Terminal:
+   ```console
+   sudo ddcutil detect
+   ```
+   Output:
+   ```console
+   Display 1
+      I2C bus:  /dev/i2c-2
+      DRM connector:           card1-HDMI-A-1
+      EDID synopsis:
+         Mfg id:               AOC - UNK
+         Model:                24B2W1G5
+         Product code:         9218  (0x2402)
+         Serial number:        XXTNBHA000107
+         Binary serial number: 107 (0x0000006b)
+         Manufacture year:     2022,  Week: 48
+      VCP version:         2.1
+   ```
+2. Find the input source feature (60):
+
+   Terminal:
+   ```console
+   sudo ddcutil capabilities --display 1
+   ```
+   Output:
+   ```console
+   ...
+   Feature: 60 (Input Source)
+      Values:
+         01: VGA-1
+         03: DVI-1
+         11: HDMI-1
+   ...
+   ```
+3. Compose the command:
+
+   Terminal:
+   ```console
+   ddcutil setvcp 60 01 --display 1
+   ```
