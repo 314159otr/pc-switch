@@ -11,8 +11,16 @@
 2. Install hidapitester (Simple command-line program to exercise HIDAPI):
 
    GitHub: https://github.com/todbot/hidapitester  
-   TODO: how to compile and where to put it
-3. Install ddcutil (Linux program for managing monitor settings):
+   Terminal:
+   ```console
+   git clone https://github.com/libusb/hidapi
+   git clone https://github.com/todbot/hidapitester
+   cd hidapitester
+   make
+   ```
+   Move the binary to `/usr/local/bin/` and delete both cloned repositories.
+   
+4. Install ddcutil (Linux program for managing monitor settings):
 
    Terminal:
    ```console
