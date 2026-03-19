@@ -13,12 +13,15 @@
    GitHub: https://github.com/todbot/hidapitester  
    Terminal:
    ```console
+   cd ~
    git clone https://github.com/libusb/hidapi
    git clone https://github.com/todbot/hidapitester
    cd hidapitester
    make
+   mv hidapitester ~/.local/bin/
+   cd ~
+   rm -fr hidapi*
    ```
-   Move the binary to `/usr/local/bin/` and delete both cloned repositories.
    
 4. Install ddcutil (Linux program for managing monitor settings):
 
