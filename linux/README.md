@@ -29,6 +29,10 @@
    ```console
    sudo pacman -S ddcutil
    ```
+   Once had to do:
+   ```console
+   sudo modprobe i2c-dev
+   ```
 # Configuration
 
 ## Logitech Devices
