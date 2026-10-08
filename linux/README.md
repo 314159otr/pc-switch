@@ -2,7 +2,7 @@
 
 1. Install Solaar (Linux device manager for Logitech devices):
 
-   GitHub: https://github.com/pwr-Solaar/Solaar  
+   GitHub: https://github.com/pwr-Solaar/Solaar
    Terminal:
    ```console
    sudo pacman -S solaar
@@ -10,7 +10,7 @@
 
 2. Install hidapitester (Simple command-line program to exercise HIDAPI):
 
-   GitHub: https://github.com/todbot/hidapitester  
+   GitHub: https://github.com/todbot/hidapitester
    Terminal:
    ```console
    cd ~
@@ -22,7 +22,7 @@
    cd ~
    rm -fr hidapi*
    ```
-   
+
 4. Install ddcutil (Linux program for managing monitor settings):
 
    Terminal:
@@ -57,7 +57,7 @@
      Model ID:      B03400000000
      ```
    - Hidapitester device vidpid (046D/B034):
-     
+
      Terminal:
      ```console
      hidapitester --list-detail
@@ -69,8 +69,8 @@
      productId:     0xB034
      usagePage:     0xFF43
      usage:         0x0202
-     serial_number: df:32:d4:4f:58:fb 
-     interface:     -1 
+     serial_number: df:32:d4:4f:58:fb
+     interface:     -1
      path: /dev/hidraw3
      ```
 2. Find the HID instruction to switch the channel of the device (11 FF 0A1D 01000000000000000000000000000000):
@@ -91,12 +91,12 @@
    Write the HID in this format:
    ```console
    0x11,0xFF,0x0A,0x1D,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
-   ```  
-   Only the first 5 values are different from 0x00:  
-   `0x11`: Always stays 0x11  
-   `0xFF`: 0x00 or 0xFF = bluetooth, 0x01,0x02... = The number of the device connected to the Unifying receiver  
-   `0x0A`: Device specific value  
-   `0x1D`: Device specific value (0x10...0x1F works too...)  
+   ```
+   Only the first 5 values are different from 0x00:
+   `0x11`: Always stays 0x11
+   `0xFF`: 0x00 or 0xFF = bluetooth, 0x01,0x02... = The number of the device connected to the Unifying receiver
+   `0x0A`: Device specific value
+   `0x1D`: Device specific value (0x10...0x1F works too...)
    `0x01`: Channel to switch: 0x00 = channel 1, 0x01 = channel 2, 0x02 = channel 3
 
    Command looks like:
